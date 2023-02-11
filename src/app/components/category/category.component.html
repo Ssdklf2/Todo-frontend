@@ -10,10 +10,12 @@
   <div class="sidebar-wrapper">
     <ul class="nav">
       <li class="nav-item" *ngFor="let category of categories"
-          (click)="taskService.fillTasksByCategory(category)">
+          (click)="taskService.fillTasksByCategory(category)"
+          [class.active]="taskService.selectedCategory === category"
+      >
         <a class="nav-link">
           <i class="material-icons">dashboard</i>
-          <p>{{category.title}}</p>
+          <p appHighlighter>{{category.title}}</p>
         </a>
       </li>
     </ul>

@@ -10,6 +10,7 @@ import {BehaviorSubject} from "rxjs";
 export class TaskService {
 
   taskSubject = new BehaviorSubject<Task[]>(TestData.tasks)
+  selectedCategory: Category
 
   constructor() {
   }
@@ -19,6 +20,7 @@ export class TaskService {
   }
 
   fillTasksByCategory(category: Category) {
+    this.selectedCategory = category
     return this.taskSubject.next(TestData.tasks.filter(task => task.category === category))
   }
 }
