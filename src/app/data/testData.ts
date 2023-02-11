@@ -23,7 +23,7 @@ export class TestData {
   static tasks: Task[] = [
     {
       id: 1,
-      title: 'task1',
+      title: 'sdioghsdpjgipsdjpvohjdsiphngidshiogvjsdehnsdiobg',
       category: TestData.categories[1],
       date: new Date('2019-12-12'),
       completed: true,
@@ -31,7 +31,7 @@ export class TestData {
     },
     {
       id: 2,
-      title: 'task2',
+      title: 'sdioghsdpjgipsdjpvohjdsiphngidshiogvjsdehnsdiobg',
       category: TestData.categories[1],
       date: new Date('2019-12-12'),
       completed: true,
