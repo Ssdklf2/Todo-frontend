@@ -7,7 +7,8 @@
         <div class="navbar-wrapper">
           <a class="navbar-brand" href="javascript:void(0)">Dashboard</a>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
           <span class="sr-only">Toggle navigation</span>
           <span class="navbar-toggler-icon icon-bar"></span>
           <span class="navbar-toggler-icon icon-bar"></span>
@@ -33,7 +34,8 @@
               </a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                 aria-haspopup="true" aria-expanded="false">
                 <i class="material-icons">notifications</i>
                 <span class="notification">5</span>
                 <p class="d-lg-none d-md-block">
@@ -72,7 +74,8 @@
               <div class="card-body">
                 <h4 class="card-title">Daily Sales</h4>
                 <p class="card-category">
-                  <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+                  <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.
+                </p>
               </div>
               <div class="card-footer">
                 <div class="stats">
@@ -315,7 +318,8 @@
                             </label>
                           </div>
                         </td>
-                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain
+                          swept through metro Detroit
                         </td>
                         <td class="td-actions text-right">
                           <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
@@ -364,7 +368,8 @@
                             </label>
                           </div>
                         </td>
-                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain
+                          swept through metro Detroit
                         </td>
                         <td class="td-actions text-right">
                           <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
@@ -434,7 +439,8 @@
                             </label>
                           </div>
                         </td>
-                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                        <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain
+                          swept through metro Detroit
                         </td>
                         <td class="td-actions text-right">
                           <button type="button" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
@@ -556,7 +562,8 @@
         </a>
       </li>
       <li class="button-container">
-        <a href="https://www.creative-tim.com/product/material-dashboard-dark" target="_blank" class="btn btn-primary btn-block">Free Download</a>
+        <a href="https://www.creative-tim.com/product/material-dashboard-dark" target="_blank"
+           class="btn btn-primary btn-block">Free Download</a>
       </li>
       <!-- <li class="header-title">Want more components?</li>
           <li class="button-container">
@@ -565,12 +572,15 @@
               </a>
           </li> -->
       <li class="button-container">
-        <a href="https://demos.creative-tim.com/material-dashboard-dark/docs/2.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
+        <a href="https://demos.creative-tim.com/material-dashboard-dark/docs/2.0/getting-started/introduction.html"
+           target="_blank" class="btn btn-default btn-block">
           View Documentation
         </a>
       </li>
       <li class="button-container github-star">
-        <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard/tree/dark-edition" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
+        <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard/tree/dark-edition"
+           data-icon="octicon-star" data-size="large" data-show-count="true"
+           aria-label="Star ntkme/github-buttons on GitHub">Star</a>
       </li>
       <li class="header-title">Thank you for 95 shares!</li>
       <li class="button-container text-center">
@@ -601,8 +611,8 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/demo/demo.js"></script>
 <script>
-  $(document).ready(function() {
-    $().ready(function() {
+  $(document).ready(function () {
+    $().ready(function () {
       $sidebar = $('.sidebar');
 
       $sidebar_img_container = $sidebar.find('.sidebar-background');
@@ -613,7 +623,7 @@
 
       window_width = $(window).width();
 
-      $('.fixed-plugin a').click(function(event) {
+      $('.fixed-plugin a').click(function (event) {
         // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
         if ($(this).hasClass('switch-trigger')) {
           if (event.stopPropagation) {
@@ -624,7 +634,7 @@
         }
       });
 
-      $('.fixed-plugin .active-color span').click(function() {
+      $('.fixed-plugin .active-color span').click(function () {
         $full_page_background = $('.full-page-background');
 
         $(this).siblings().removeClass('active');
@@ -645,7 +655,7 @@
         }
       });
 
-      $('.fixed-plugin .background-color .badge').click(function() {
+      $('.fixed-plugin .background-color .badge').click(function () {
         $(this).siblings().removeClass('active');
         $(this).addClass('active');
 
@@ -656,7 +666,7 @@
         }
       });
 
-      $('.fixed-plugin .img-holder').click(function() {
+      $('.fixed-plugin .img-holder').click(function () {
         $full_page_background = $('.full-page-background');
 
         $(this).parent('li').siblings().removeClass('active');
@@ -666,7 +676,7 @@
         var new_image = $(this).find("img").attr('src');
 
         if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-          $sidebar_img_container.fadeOut('fast', function() {
+          $sidebar_img_container.fadeOut('fast', function () {
             $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
             $sidebar_img_container.fadeIn('fast');
           });
@@ -675,7 +685,7 @@
         if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
           var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
 
-          $full_page_background.fadeOut('fast', function() {
+          $full_page_background.fadeOut('fast', function () {
             $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
             $full_page_background.fadeIn('fast');
           });
@@ -694,7 +704,7 @@
         }
       });
 
-      $('.switch-sidebar-image input').change(function() {
+      $('.switch-sidebar-image input').change(function () {
         $full_page_background = $('.full-page-background');
 
         $input = $(this);
@@ -726,7 +736,7 @@
         }
       });
 
-      $('.switch-sidebar-mini input').change(function() {
+      $('.switch-sidebar-mini input').change(function () {
         $body = $('body');
 
         $input = $(this);
@@ -741,7 +751,7 @@
 
           $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
 
-          setTimeout(function() {
+          setTimeout(function () {
             $('body').addClass('sidebar-mini');
 
             md.misc.sidebar_mini_active = true;
@@ -749,12 +759,12 @@
         }
 
         // we simulate the window Resize so the charts will get updated in realtime.
-        var simulateWindowResize = setInterval(function() {
+        var simulateWindowResize = setInterval(function () {
           window.dispatchEvent(new Event('resize'));
         }, 180);
 
         // we stop the simulation of Window Resize after the animations are completed
-        setTimeout(function() {
+        setTimeout(function () {
           clearInterval(simulateWindowResize);
         }, 1000);
 
@@ -763,7 +773,7 @@
   });
 </script>
 <script>
-  $(document).ready(function() {
+  $(document).ready(function () {
     // Javascript method's body can be found in assets/js/demos.js
     md.initDashboardPageCharts();
 
