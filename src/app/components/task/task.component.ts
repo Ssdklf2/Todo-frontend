@@ -11,11 +11,14 @@ export class TaskComponent implements OnInit {
 
   tasks: Task[]
 
-  constructor(private dataHandlerService: TaskService) {
+  constructor(private taskService: TaskService) {
   }
 
   ngOnInit() {
-    this.dataHandlerService.taskSubject.subscribe(tasks => this.tasks = tasks)
+    this.taskService.taskSubject.subscribe(tasks => this.tasks = tasks)
   }
 
+  revertComplete(task: Task) {
+    this.taskService.changeCompletionOfTask(task)
+  }
 }
