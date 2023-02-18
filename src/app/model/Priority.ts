@@ -1,9 +1,6 @@
-export class Priority {
-  title: string
-  color: string
-
-  constructor(title: string, color: string) {
-    this.title = title;
-    this.color = color;
-  }
+export enum Priority {
+  'LOW' = '#a2ff9d',
+  'MEDIUM' = '#81eddb',
+  'HIGH' = '#ff8a8a',
+  'VERY_HIGH' = '#ff0000',
 }

@@ -4,14 +4,14 @@
 
     Tip 2: you can also add an image using data-image tag
 -->
-  <div class="logo"><a class="simple-text">
+  <div class="logo"><a class="simple-text" (click)="taskService.unselectCategory()">
     Категории
   </a></div>
   <div class="sidebar-wrapper">
     <ul class="nav">
       <li class="nav-item" *ngFor="let category of categories"
-          (click)="taskService.fillTasksByCategory(category)"
-          [class.active]="taskService.selectedCategory === category"
+          (click)="taskService.selectCategory(category)"
+          [class.active]="taskService.selectedCategory === category && taskService.selected"
       >
         <a class="nav-link">
           <i class="material-icons">dashboard</i>

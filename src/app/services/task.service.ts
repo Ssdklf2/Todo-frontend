@@ -1,39 +1,41 @@
 import {Injectable} from '@angular/core';
 import {Category} from "../model/Category";
-import {TestData} from "../data/testData";
 import {Task} from "../model/Task";
-import {BehaviorSubject, Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  taskSubject = new BehaviorSubject<Task[]>(TestData.tasks)
   selectedCategory: Category
 
-  constructor(
-    private http: HttpClient
-  ) {
+  private readonly tasksPath: string
+  selected: boolean;
+
+  constructor(private http: HttpClient) {
+    this.tasksPath = "http://localhost:8080/tasks"
   }
 
-  getAll(): Observable<Task[]> {
-    return this.http.get<Task[]>("http://localhost:8080/tasks")
+  public findAll(): Observable<Task[]> {
+    return this.http.get<Task[]>(this.tasksPath)
   }
 
-  fillTasks() {
-    return this.taskSubject.next(TestData.tasks)
+  public save(task: Task) {
+    return this.http.post<Task>(this.tasksPath, task)
   }
 
-  fillTasksByCategory(category: Category) {
+  selectCategory(category: Category) {
     this.selectedCategory = category
-    return this.taskSubject.next(TestData.tasks.filter(task => task.category === category))
+    this.selected = true
+  }
+
+  unselectCategory() {
+    this.selected = false
   }
 
   changeCompletionOfTask(task: Task) {
     task.completed = !task.completed
-    // TestData.tasks.at(task.id).completed.;
-
   }
 }

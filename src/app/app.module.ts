@@ -6,6 +6,10 @@ import {CategoryComponent} from './components/category/category.component';
 import {TaskComponent} from './components/task/task.component';
 import {HighlighterDirective} from './directives/highlighter.directive';
 import {ColorChangerDirective} from './directives/color-changer.directive';
+import {HttpClientModule} from "@angular/common/http";
+import {CreateTaskComponent} from './components/create-task/create-task.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {FilterTasksPipe} from './pipes/filter-tasks.pipe';
 
 @NgModule({
   declarations: [
@@ -13,10 +17,15 @@ import {ColorChangerDirective} from './directives/color-changer.directive';
     CategoryComponent,
     TaskComponent,
     HighlighterDirective,
-    ColorChangerDirective
+    ColorChangerDirective,
+    CreateTaskComponent,
+    FilterTasksPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
