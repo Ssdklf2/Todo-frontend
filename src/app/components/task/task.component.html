@@ -1,83 +1,87 @@
-<div class="col-lg-12 col-md-12">
-  <div class="text-right">
-    <button type="button" rel="tooltip" title="Создать новую задачу" class="btn btn-outline-info">
-      <i class="material-icons">add_circle</i>
+<div class="px-20 py-14 w-auto">
+
+  <div class="bg-cyan-400 p-4 text-2xl text-white rounded-t-3xl shadow flex justify-between">
+    <h1 class="font-bold pl-2">Задачи</h1>
+    <button class="px-2 py-2 rounded-full bg-green-300 text-white font-bold hover:bg-green-400"
+            title="Добавить новую задачу"
+            (click)="modalService.open(action.CREATE_TASK)">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+           class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
+      </svg>
     </button>
   </div>
-  <div class="card">
 
-    <div class="card-header card-header-success">
-      <h4 class="card-title">Задачи</h4>
+  <div class="flex flex-col  bg-gray-50 shadow rounded-3xl">
+    <div class="py-0 inline-block min-w-full px-0">
+      <div class="overflow-hidden">
+        <table class="min-w-full">
+          <thead class="bg-gray-200">
+          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+            </svg>
+          </th>
+          <th scope="col" class="text-sm font-medium text-gray-900 px-0 py-0 text-left">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+            </svg>
+          </th>
+          <th scope="col" class="font-sans text-black px-6 py-4 text-left"> Цель</th>
+          <th scope="col" class="font-sans text-black px-6 py-4 text-left"> Срок выполнения:</th>
+          <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left"></th>
+          </thead>
+          <tbody>
 
-    </div>
-    <div class="card-body">
-      <div class="tab-content">
-        <div class="tab-pane active" id="profile">
-          <table class="table">
-
-            <div *ngIf="_tasks | async as _tasks; else elseBlock">
-              <!--            <div *ngIf="_tasks; else elseBlock">-->
-              <thead>
-              <th></th>
-              <th> Цель</th>
-              <th> Приоритет</th>
-              <th> Инфааа</th>
-              <th> Option</th>
-              </thead>
-              <tbody>
-
-              <!--          если выбрана категория    -->
-              <div *ngIf="taskService.selectedCategory; else elseBlock">
-                <div> Category selected</div>
+          <tr class="last:border-b-0 border-b"
+              *ngFor="let task of taskService.tasks | filterTasks: (taskService.selected ? taskService.selectedCategory : null)">
+            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              <div>
+                <label>
+                  <input class="w-4 h-4"
+                         type="checkbox"
+                         [checked]="task.completed"
+                         (click)="revertComplete(task)">
+                  <span class="form-check-sign"><span class="check"></span></span>
+                </label>
               </div>
+            </td>
+            <td appColorChanger [color]="task.priority ? getColorOfPriority(task.priority) : 'white'">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                   stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+              </svg>
+            </td>
+            <td class=" text-gray-900 font-medium px-6 py-4 whitespace-nowrap"
+                [class.completed]="task.completed">  {{task.title}} </td>
 
-              <!--              если не выбрана-->
-              <ng-template #elseBlock><p class="text-center font-weight-bold">
-                Category NOT selected
-              </p></ng-template>
+            <td class=" text-gray-900 font-medium px-6 py-4 whitespace-nowrap"
+                [class.completed]="task.completed">  {{task.deadline | date}} </td>
 
-              <tr
-                *ngFor="let task of _tasks | filterTasks: (taskService.selected ? taskService.selectedCategory : null)">
-                <td>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" value=""
-                             [checked]="task.completed"
-                             (click)="revertComplete(task)"
-                      >
-                      <span class="form-check-sign">
-                                    <span class="check"></span>
-                                  </span>
-                    </label>
-                  </div>
-                </td>
-
-                <td [class.completed]="task.completed">  {{task.title}} </td>
-                <td appColorChanger [color]="task.priority ? getColorOfPriority(task.priority) : 'white'">
-                  <i class="material-icons">priority_high</i>
-                </td>
-
-                <td>  {{task.links.at(0)?.href}} </td>
-                <!--                              <td>  {{task.category?.title}} </td>-->
-
-
-                <td class="td-actions text-right">
-                  <button type="button" rel="tooltip" title="Edit Task" class="btn btn-dark btn-link btn-sm">
-                    <i class="material-icons">edit</i>
-                  </button>
-                  <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
-                    <i class="material-icons">delete</i>
-                  </button>
-                </td>
-              </tr>
-
-              </tbody>
-              <!--              </div>-->
-            </div>
-
-            <ng-template #elseBlock><p class="text-center font-weight-bold">Нет задач</p></ng-template>
-          </table>
-        </div>
+            <td class="text-right">
+              <button type="button"
+                      class="text-gray-300 hover:text-gray-800"
+                      (click)="
+                      this.modalService.task = task;
+                      this.modalService.open(action.MODIFY_TASK)"
+              >
+                <i class="material-icons">edit</i>
+              </button>
+              <button (click)="deleteTask(task)"
+                      type="button" class="m-3
+                         text-red-500
+                         opacity-50
+                         hover:opacity-100">
+                <i class="material-icons">delete</i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

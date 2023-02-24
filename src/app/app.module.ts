@@ -10,6 +10,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {CreateTaskComponent} from './components/create-task/create-task.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {FilterTasksPipe} from './pipes/filter-tasks.pipe';
+import {ModalComponent} from './components/modal/modal.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,14 @@ import {FilterTasksPipe} from './pipes/filter-tasks.pipe';
     HighlighterDirective,
     ColorChangerDirective,
     CreateTaskComponent,
-    FilterTasksPipe
+    FilterTasksPipe,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
 
   ],
   providers: [],

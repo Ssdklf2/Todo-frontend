@@ -1,23 +1,24 @@
-<div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
-  <!--
-    Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-    Tip 2: you can also add an image using data-image tag
--->
-  <div class="logo"><a class="simple-text" (click)="taskService.unselectCategory()">
-    Категории
-  </a></div>
-  <div class="sidebar-wrapper">
-    <ul class="nav">
-      <li class="nav-item" *ngFor="let category of categories"
-          (click)="taskService.selectCategory(category)"
-          [class.active]="taskService.selectedCategory === category && taskService.selected"
-      >
-        <a class="nav-link">
-          <i class="material-icons">dashboard</i>
-          <p appHighlighter>{{category.title}}</p>
+<aside id="logo-sidebar"
+       class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r
+       border-gray-200 sm:translate-x-0 "
+       aria-label="Sidebar">
+  <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
+    <ul class="space-y-2">
+      <li (click)="taskService.unselectCategory()">
+        <a href="#"
+           class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100">
+          <span class="ml-3">Все категории</span>
+        </a>
+      </li>
+      <li *ngFor="let category of categories"
+          (click)="taskService.selectCategory(category)">
+        <a href="#"
+           class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100"
+           [ngClass]="{'bg-cyan-200 hover:bg-cyan-300':taskService.selectedCategory === category && taskService.selected}"
+        >
+          <span class="ml-3">{{category.title}}</span>
         </a>
       </li>
     </ul>
   </div>
-</div>
+</aside>

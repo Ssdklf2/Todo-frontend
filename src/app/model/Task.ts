@@ -1,16 +1,16 @@
 import {Category} from "./Category";
-import {Priority} from "./Priority";
+import {Priorities} from "./enums/Priorities";
 import {Link} from "./Link";
 
 export class Task {
   title: string
   completed: boolean
   category?: Category
-  priority?: Priority
+  priority?: Priorities
   deadline?: string
   links: Link[]
 
-  constructor(title: string, completed: boolean, selfLink: Link[], category?: Category, priority?: Priority, deadline?: string) {
+  constructor(title: string, completed: boolean, selfLink: Link[], category?: Category, priority?: Priorities, deadline?: string) {
     this.title = title;
     this.completed = completed;
     this.links = selfLink

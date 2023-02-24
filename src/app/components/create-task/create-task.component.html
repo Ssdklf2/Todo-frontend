@@ -1,0 +1,84 @@
+<form [formGroup]="taskForm" (ngSubmit)="submit(taskForm.value)">
+  <div class="flex flex-wrap mb-6">
+    <!--      Title-->
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label for="title" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Задача: </label>
+      <input type="text"
+             formControlName="title"
+             id="title"
+             class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 focus:bg-white"
+             placeholder="Цель"
+             [ngClass]="{ 'is-invalid': f.title.touched && f.title.errors, 'is-valid': f.title.valid }">
+
+      <div *ngIf="f.title.touched && f.title.errors" class="invalid-feedback">
+        <div *ngIf="f.title.errors.required" class="text-red-500 text-xs italic">Обязательное поле</div>
+      </div>
+    </div>
+
+    <!--     Category -->
+    <div class="w-1/3 px-3 mb-2">
+      <p class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Категория: </p>
+
+      <div class="relative">
+        <select
+          class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8
+          rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          name="category" formControlName="category"
+          [ngClass]="{ 'is-invalid': f.category.touched && f.category.errors, 'is-valid': f.category.valid }"
+        >
+
+          <option *ngFor="let category of categories" value="{{category.title}}">{{category.title}}</option>
+        </select>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+          </svg>
+        </div>
+
+      </div>
+      <div *ngIf="f.category.touched && f.category.errors" class="invalid-feedback">
+        <div *ngIf="f.category.errors.required" class="text-red-500 text-xs italic">Выберите категорию</div>
+      </div>
+    </div>
+
+
+    <!--    Priority выбор (радио-кнопка) -->
+
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <p class="mt-4 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Приоритет: </p>
+      <div class="grid w-[20rem] grid-cols-4 space-x-2 rounded-xl bg-gray-200 p-2">
+        <label
+          class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-blue-500 peer-checked:font-bold peer-checked:text-white"
+          *ngFor="let priority of priorities">
+          <input class="w-4 h-4"
+                 type="radio" formControlName="priority"
+                 required
+                 [ngClass]="{ 'is-invalid': f.priority.touched && f.priority.errors, 'is-valid': f.priority.valid }"
+                 name="priority" value="{{priority}}">{{priority}}
+          <!--     (низкий)-> Priority - -- -getPriorityByName!! -->
+        </label>
+      </div>
+      <div *ngIf="f.priority.untouched && f.priority.errors" class="invalid-feedback">
+        <div *ngIf="f.priority.errors.required" class="text-red-500 text-xs italic">Выберите приоритет</div>
+      </div>
+    </div>
+
+    <!--     Deadline:  -->
+    <div class="w-full px-2 mb-6">
+      <div class="form-group">
+        <label for="deadline" class="mt-4 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Срок
+          выполнения:</label>
+        <input type="date" class="form-control" formControlName="deadline" id="deadline"
+               placeholder="Deadline">
+      </div>
+    </div>
+
+    <!--    BUTTON  -->
+    <div class="">
+      <button id="button" type="submit" [disabled]="taskForm.invalid"
+              class="bg-green-100 hover:bg-green-400 shadow rounded-2xl px-2 py-2">Сохранить
+        <div *ngIf="taskForm.invalid" class="">Нужно заполнить все поля</div>
+      </button>
+    </div>
+  </div>
+</form>
