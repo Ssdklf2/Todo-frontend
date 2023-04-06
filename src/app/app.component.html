@@ -1,19 +1,10 @@
+<header>
+  <app-navigation></app-navigation>
+</header>
 <main>
   <div class="flex flex-col md:flex-row">
-    <app-category></app-category>
-    <div class="p-4 sm:ml-64">
-      <app-task></app-task>
-    </div>
-    <app-modal
-      *ngIf="modalService.isVisibleChangeTask$ | async"
-      name="Изменить задачу">
-      <app-create-task></app-create-task>
-    </app-modal>
-    <app-modal
-      *ngIf="modalService.isVisibleCreateTask$ | async"
-      name="Сохранить новую задачу">
-      <app-create-task></app-create-task>
-    </app-modal>
+    <router-outlet></router-outlet>
   </div>
 </main>
+
 
